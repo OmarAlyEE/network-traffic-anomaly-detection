@@ -11,14 +11,14 @@ FEATURE_PATH = BASE_DIR / "data" / "raw" / "NUSW-NB15_features.csv"
 
 def load_data():
     print("Loading feature names...")
-    # Fix encoding issue for features file
+
     features = pd.read_csv(FEATURE_PATH, encoding='ISO-8859-1')
     
     # Convert feature names to lowercase to avoid KeyErrors
     column_names = [str(c).lower() for c in features["Name"].tolist()]
 
     print("Loading dataset...")
-    df = pd.read_csv(DATA_PATH, names=column_names, low_memory=False)
+    df = pd.read_csv(DATA_PATH, names=column_names, header=None, low_memory=False)
     
     # Make sure target column is lowercase too
     if 'label' not in df.columns and 'Label'.lower() not in df.columns:
