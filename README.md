@@ -17,6 +17,39 @@ The project demonstrates a full applied machine learning workflow including:
 The pipeline was tested on **~2 million network flows**, making it suitable for realistic operational environments.
 
 ---
+## Methodology
+
+The project follows an end-to-end machine learning pipeline:
+
+1. Data Preprocessing
+   - Cleaning missing values
+   - Encoding categorical variables (protocols)
+   - Removing duplicates
+
+2. Feature Engineering
+   - Selection of high-signal network features
+   - Creation of protocol one-hot features
+
+3. Feature Scaling
+   - Standardization using StandardScaler
+
+4. Model Training
+   - Isolation Forest trained on scaled features
+
+5. Anomaly Detection
+   - Prediction of anomaly labels
+   - Computation of anomaly scores
+
+6. Explainability
+   - Global feature importance
+   - SHAP-based local explanations for anomalies
+
+7. Visualization & Analysis
+   - Distribution plots
+   - Feature importance graphs
+   - SHAP summary plots
+  ---
+
 
 # Dataset
 
@@ -388,7 +421,15 @@ anomaly_flag
 These allow further inspection and visualization.
 
 ---
+## Applied Machine Learning Techniques
 
+- Unsupervised anomaly detection using Isolation Forest
+- Feature scaling using StandardScaler
+- Feature engineering for network flow statistics
+- Explainable AI using SHAP (global and local explanations)
+- Anomaly scoring and ranking for operational prioritization
+
+---
 # Performance
 
 Training was performed on approximately **2 million network flows** with **16 numerical features**.
@@ -420,7 +461,61 @@ python src/models.py
 Results will be saved automatically.
 
 ---
+## Model Results
 
+| Metric                  | Value                  |
+|------------------------|------------------------|
+| Dataset Size           | ~1.98 million flows    |
+| Selected Features      | 16                     |
+| Model                  | Isolation Forest       |
+| Contamination          | 0.005                  |
+| Detected Anomalies     | ~0.1% – 0.5%           |
+| Training Time          | ~25 seconds            |
+
+The model successfully identifies rare and abnormal traffic patterns while maintaining a low false positive rate.
+
+---
+## Explainability
+
+The model includes explainability using SHAP (Shapley Additive Explanations).
+
+### Global Insights
+- Byte-related features (sbytes, dbytes) are the strongest indicators of anomalies
+- Duration (dur) and TTL values contribute significantly to anomaly detection
+---
+### Local Insights (Per Session)
+Example anomaly explanation:
+
+- High source bytes (sbytes)
+- Long connection duration (dur)
+- Abnormal TTL values (sttl, dttl)
+- Unusual port usage (sport)
+
+These insights help understand *why* a network session is flagged, making the system more interpretable and useful in real-world security operations.
+
+---
+## Visual Results
+
+The project generates multiple visualizations:
+
+- Anomaly score distribution
+- Feature importance plots
+- SHAP summary plots
+- SHAP waterfall plots for individual anomalies
+
+All figures are saved in: reports/figures
+
+---
+
+## Key Achievements
+
+- Processed and analyzed ~2 million network flows
+- Built a full machine learning pipeline for anomaly detection
+- Implemented explainable AI for model transparency
+- Designed a scalable and modular project structure
+- Produced actionable insights for network security analysis
+
+---
 # Future Improvements
 
 Potential extensions to the project include:
