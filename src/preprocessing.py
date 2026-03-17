@@ -1,4 +1,3 @@
-
 # src/preprocessing.py
 
 import pandas as pd
@@ -15,8 +14,9 @@ SAVE_PATH.parent.mkdir(parents=True, exist_ok=True)
 
 def select_features(df):
     print("Selecting features...")
-
+    df["timestamp"] = pd.to_datetime(df["timestamp"])
     columns = [
+        "timestamp"
         "srcip",
         "dstip",
         "sport",
