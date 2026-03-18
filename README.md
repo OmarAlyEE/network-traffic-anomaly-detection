@@ -479,6 +479,18 @@ The model successfully identifies rare and abnormal traffic patterns while maint
 
 The model includes explainability using SHAP (Shapley Additive Explanations).
 
+
+
+---
+## Real-Time Processing (Kafka)
+
+- Implemented real-time anomaly detection using Apache Kafka
+- Streamed network traffic data through Kafka topics
+- Performed online inference using trained Isolation Forest model
+- Generated real-time anomaly alerts via event-driven pipeline
+- Built live dashboard using Streamlit
+---
+
 ### Global Insights
 - Byte-related features (sbytes, dbytes) are the strongest indicators of anomalies
 - Duration (dur) and TTL values contribute significantly to anomaly detection
