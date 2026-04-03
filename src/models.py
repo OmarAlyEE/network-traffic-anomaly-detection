@@ -58,8 +58,7 @@ def generate_features(df):
         'dsport',       # destination port
     ]
 
-    # Selected protocol one-hots (only common/dangerous ones — add more if needed)
-    # These help detect protocol anomalies without exploding dimensionality
+
     proto_features = [
         'proto_tcp',
         'proto_udp',
