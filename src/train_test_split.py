@@ -32,7 +32,7 @@ FEATURE_COLUMNS = [
 ]
 
 # -------------------------
-# SUPERVISED SPLIT (if label exists)
+# SUPERVISED SPLIT 
 # -------------------------
 if "label" in df.columns:
 
