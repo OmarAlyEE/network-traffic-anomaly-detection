@@ -59,7 +59,7 @@ if "label" in df.columns:
     y_test.to_csv("../data/processed/y_test.csv", index=False)
 
 # -------------------------
-# UNSUPERVISED SPLIT (chronological)
+# UNSUPERVISED SPLIT 
 # -------------------------
 else:
 
