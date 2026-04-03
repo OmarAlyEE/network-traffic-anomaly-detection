@@ -7,7 +7,7 @@ import time
 df = pd.read_csv("../data/processed/network_logs_preprocessed.csv")
 
 # ────────────────────────────────────────────────
-# Define EXACTLY the same 16 features used in training
+# Define the necessary 16 features used in training
 # ────────────────────────────────────────────────
 core_features = ['dur', 'sbytes', 'dbytes', 'sttl', 'dttl', 'sport', 'dsport']
 proto_features = [
